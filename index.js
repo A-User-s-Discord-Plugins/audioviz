@@ -1,11 +1,11 @@
-const { Plugin } = require('powercord/entities')
+const { Plugin } = require('@vizality/entities')
 
 module.exports = class AudioViz extends Plugin {
-  startPlugin () {
+  onStart () {
     setTimeout(() => {
       this.intervals = []
       this.startVisualizer()
-      this.loadStylesheet('style.scss')
+      this.injectStyles('style.scss')
     }, 0)
   }
 
@@ -14,7 +14,7 @@ module.exports = class AudioViz extends Plugin {
     this.startVisualizer()
   }
 
-  pluginWillUnload() {
+  onStop() {
     this.stopVisualizer()
   }
 
